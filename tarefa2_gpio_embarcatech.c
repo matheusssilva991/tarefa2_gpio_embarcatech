@@ -11,12 +11,16 @@
 
 int main()
 {
-    char *word;
+    char word[20];
 
     stdio_init_all();
 
+    //configuração dos pinos
+    gpio_init(RED_LED_PIN);
+    gpio_set_dir(RED_LED_PIN, GPIO_OUT);
+
     while (true) {
-        scanf("%s", word);
+        scanf("%19s", word);
 
         if (strcmp(word, "green") == 0 || strcmp(word, "verde") == 0) {
             // Ligar o LED verde e desligar os outros
@@ -25,7 +29,13 @@ int main()
             // Ligar o LED azul e desligar os outros
             printf("ON: BLUE\n");
         } else if (strcmp(word, "red") == 0 || strcmp(word, "vermelho") == 0) {
-            // Ligar o LED vermelho e desligar os outros
+            
+            //ligar o led vermelho
+            printf("Led vermelho ligado\n");
+            gpio_put(GREEN_LED_PIN, 0);
+            gpio_put(BLUE_LED_PIN, 0);
+            gpio_put(RED_LED_PIN, 1);
+
         } else if (strcmp(word, "white") == 0 || strcmp(word, "branco") == 0) {
             // Ligar todos os LEDs
             printf("ON: WHITE\n");
