@@ -3,10 +3,12 @@
 #include "pico/stdlib.h"
 #include "pico/bootrom.h"
 
+// Pinos dos LEDS
 #define GREEN_LED_PIN 11
 #define BLUE_LED_PIN 12
 #define RED_LED_PIN 13
 
+// Pino do Buzzer
 #define BUZZER_PIN 21
 
 int main()
@@ -34,8 +36,10 @@ int main()
 
         if (strcmp(word, "green") == 0 || strcmp(word, "verde") == 0)
         {
-            // Ligar o LED verde e desligar os outros
             printf("ON: GREEN\n");
+            gpio_put(GREEN_LED_PIN, 1);
+            gpio_put(BLUE_LED_PIN, 0);
+            gpio_put(RED_LED_PIN, 0);
         }
         else if (strcmp(word, "blue") == 0 || strcmp(word, "azul") == 0)
         {
