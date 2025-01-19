@@ -19,6 +19,10 @@ int main()
     gpio_init(RED_LED_PIN);
     gpio_set_dir(RED_LED_PIN, GPIO_OUT);
 
+    // Configuração do pino do buzzer
+    gpio_init(BUZZER_PIN);
+    gpio_set_dir(BUZZER_PIN, GPIO_OUT);
+
     while (true) {
         scanf("%19s", word);
 
@@ -45,6 +49,10 @@ int main()
         } else if (strcmp(word, "buzzer") == 0 || strcmp(word, "buzina") == 0) {
             // Ligar o buzzer por 2 segundo
             printf("ON: BUZZER\n");
+            gpio_put(BUZZER_PIN, 1);  // Ligar o buzzer
+            sleep_ms(2000);            // Aguardar 2 segundos
+            gpio_put(BUZZER_PIN, 0);  // Desligar o buzzer
+
         } else if (strcmp(word, "bootsel") == 0) {
             printf("SYSTEM: BOOTSEL\n");
             reset_usb_boot(0, 0);
