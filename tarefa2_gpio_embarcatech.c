@@ -36,6 +36,7 @@ int main()
 
         if (strcmp(word, "green") == 0 || strcmp(word, "verde") == 0)
         {
+            // Ligar o LED verde e desligar os outros
             printf("ON: GREEN\n");
             gpio_put(GREEN_LED_PIN, 1);
             gpio_put(BLUE_LED_PIN, 0);
@@ -51,7 +52,7 @@ int main()
         }
         else if (strcmp(word, "red") == 0 || strcmp(word, "vermelho") == 0)
         {
-            // ligar o led vermelho
+            // // Ligar o LED vermelho e desligar os outros
             printf("ON: RED\n");
             gpio_put(GREEN_LED_PIN, 0);
             gpio_put(BLUE_LED_PIN, 0);
