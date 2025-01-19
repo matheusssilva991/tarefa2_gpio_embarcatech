@@ -12,7 +12,7 @@
 void turn_off_leds() {
     gpio_put(GREEN_LED_PIN, 0); // Desliga o LED verde
     gpio_put(BLUE_LED_PIN, 0);  // Desliga o LED azul
-    gpio_put(RED_LED_PIN, 0);   // Desliga o LED vermelho
+    gpio_put(RED_LED_PIN, 0);   // Desliga o LED vermelhoo
 }
 
 int main()
