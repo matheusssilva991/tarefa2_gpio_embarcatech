@@ -14,3 +14,20 @@ void turn_off_leds() {
     gpio_put(BLUE_LED_PIN, 0);  // Desliga o LED azul
     gpio_put(RED_LED_PIN, 0);   // Desliga o LED vermelho
 }
+
+int main()
+{
+    char *word;
+
+    stdio_init_all();
+
+    // Inicialização dos pinos (essa parte deve ser feita por um responsável por outra funcionalidade, se necessário)
+    gpio_init(GREEN_LED_PIN);
+    gpio_set_dir(GREEN_LED_PIN, GPIO_OUT);
+    gpio_init(BLUE_LED_PIN);
+    gpio_set_dir(BLUE_LED_PIN, GPIO_OUT);
+    gpio_init(RED_LED_PIN);
+    gpio_set_dir(RED_LED_PIN, GPIO_OUT);
+
+    while (true) {
+        scanf("%s", word);
