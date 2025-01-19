@@ -62,6 +62,9 @@ int main()
         else if (strcmp(word, "off") == 0 || strcmp(word, "desligar") == 0)
         {
             // Desligar todos os LEDs
+            gpio_put(GREEN_LED_PIN, 0);
+            gpio_put(BLUE_LED_PIN, 0);
+            gpio_put(RED_LED_PIN, 0);
             printf("SYSTEM: OFF\n");
         }
         else if (strcmp(word, "buzzer") == 0 || strcmp(word, "buzina") == 0)
