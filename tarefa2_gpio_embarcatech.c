@@ -16,15 +16,17 @@ int main()
     stdio_init_all();
 
     // configuração dos pinos
-    gpio_init(RED_LED_PIN);
-    gpio_set_dir(RED_LED_PIN, GPIO_OUT);
-
-    // Configuração do pino do buzzer
-    gpio_init(BUZZER_PIN);
-    gpio_set_dir(BUZZER_PIN, GPIO_OUT);
+    gpio_init(GREEN_LED_PIN);
+    gpio_set_dir(GREEN_LED_PIN, GPIO_OUT);
 
     gpio_init(BLUE_LED_PIN);
     gpio_set_dir(BLUE_LED_PIN, GPIO_OUT);
+
+    gpio_init(RED_LED_PIN);
+    gpio_set_dir(RED_LED_PIN, GPIO_OUT);
+
+    gpio_init(BUZZER_PIN);
+    gpio_set_dir(BUZZER_PIN, GPIO_OUT);
 
     while (true)
     {
@@ -57,7 +59,7 @@ int main()
             printf("ON: WHITE\n");
             gpio_put(GREEN_LED_PIN, 1);
             gpio_put(BLUE_LED_PIN, 1);
-            gpiot_put(RED_LED_PIN, 1);
+            gpio_put(RED_LED_PIN, 1);
         }
         else if (strcmp(word, "off") == 0 || strcmp(word, "desligar") == 0)
         {
