@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "pico/stdlib.h"
+#include "pico/bootrom.h"
 
 #define GREEN_LED_PIN 11
 #define BLUE_LED_PIN 12
@@ -15,7 +16,7 @@ int main()
     stdio_init_all();
 
     while (true) {
-        word = scanf("%s", word);
+        scanf("%s", word);
 
         if (strcmp(word, "green") == 0 || strcmp(word, "verde") == 0) {
             // Ligar o LED verde e desligar os outros
@@ -36,7 +37,7 @@ int main()
             printf("ON: BUZZER\n");
         } else if (strcmp(word, "bootsel") == 0) {
             printf("SYSTEM: BOOTSEL\n");
-            // Entrar no modo Bootsel
+            reset_usb_boot(0, 0);
         } else {
             printf("SYSTEM: INVALID COMMAND\n");
         }
