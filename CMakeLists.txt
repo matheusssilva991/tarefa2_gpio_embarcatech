@@ -54,9 +54,7 @@ target_include_directories(tarefa2_gpio_embarcatech PRIVATE
 )
 
 # Add any user requested libraries
-target_link_libraries(tarefa2_gpio_embarcatech 
-        
-        )
+target_link_libraries(tarefa2_gpio_embarcatech pico_stdlib hardware_pwm)
 
 pico_add_extra_outputs(tarefa2_gpio_embarcatech)
 
