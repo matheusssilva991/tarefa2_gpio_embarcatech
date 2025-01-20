@@ -5,6 +5,8 @@ Este projeto implementa um sistema de controle de LEDs e um buzzer utilizando o 
 
 Cada membro da equipe contribuiu com uma funcionalidade específica para o desenvolvimento do sistema.
 
+link do vídeo do projeto em funcionamento: https://www.youtube.com/watch?v=H9yV2cVMLjk
+
 ---
 
 ## Componentes do Projeto
