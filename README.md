@@ -91,11 +91,13 @@ git push origin feature/nova-funcionalidade
 
 | Membro da Equipe | Responsabilidade |
 |-------------------|------------------|
+| **Matheus**       | Desenvolvimento do comando para ativar o modo bootsel |
 | **Keyla**         | Desenvolvimento do controle do LED verde |
 | **Pedro**         | Desenvolvimento do controle do LED azul |
 | **Davi**          | Desenvolvimento do controle do LED branco |
 | **Tiago**         | Desenvolvimento do controle do LED vermelho |
 | **Suane**         | Desenvolvimento da funcionalidade de desligar todos os LEDs |
 | **Ailtom**        | Desenvolvimento do controle do buzzer |
+
 
 ---
