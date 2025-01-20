@@ -5,9 +5,11 @@
 #include "hardware/pwm.h"
 #include "hardware/clocks.h"
 
+// Pinos dos LEDS
 #define GREEN_LED_PIN 11
 #define BLUE_LED_PIN 12
 #define RED_LED_PIN 13
+
 #define BUZZER_PIN 21
 
 // Configuração da frequência do buzzer (em Hz)
@@ -54,52 +56,75 @@ int main()
 
     stdio_init_all();
 
-    // Configuração dos pinos dos LEDs
-    gpio_init(RED_LED_PIN);
-    gpio_set_dir(RED_LED_PIN, GPIO_OUT);
-
-    gpio_init(GREEN_LED_PIN);  // Inicializando o pino do LED verde
-    gpio_set_dir(GREEN_LED_PIN, GPIO_OUT);  // Definindo como saída
+    // configuração dos pinos
+    gpio_init(GREEN_LED_PIN);
+    gpio_set_dir(GREEN_LED_PIN, GPIO_OUT);
 
     gpio_init(BLUE_LED_PIN);
     gpio_set_dir(BLUE_LED_PIN, GPIO_OUT);
 
+    gpio_init(RED_LED_PIN);
+    gpio_set_dir(RED_LED_PIN, GPIO_OUT);
+
     // Configuração do pino do buzzer
     pwm_init_buzzer(BUZZER_PIN);
 
-    while (true) {
+    while (true)
+    {
         scanf("%19s", word);
 
-        if (strcmp(word, "green") == 0 || strcmp(word, "verde") == 0) {
+        if (strcmp(word, "green") == 0 || strcmp(word, "verde") == 0)
+        {
             // Ligar o LED verde e desligar os outros
             printf("ON: GREEN\n");
-            
-        } else if (strcmp(word, "blue") == 0 || strcmp(word, "azul") == 0) {
+            gpio_put(GREEN_LED_PIN, 1);
+            gpio_put(BLUE_LED_PIN, 0);
+            gpio_put(RED_LED_PIN, 0);
+        }
+        else if (strcmp(word, "blue") == 0 || strcmp(word, "azul") == 0)
+        {
             // Ligar o LED azul e desligar os outros
             printf("ON: BLUE\n");
-            
-        } else if (strcmp(word, "red") == 0 || strcmp(word, "vermelho") == 0) {
-            // Ligar o LED vermelho e desligar os outros
+            gpio_put(GREEN_LED_PIN, 0);
+            gpio_put(BLUE_LED_PIN, 1);
+            gpio_put(RED_LED_PIN, 0);
+        }
+        else if (strcmp(word, "red") == 0 || strcmp(word, "vermelho") == 0)
+        {
+            // // Ligar o LED vermelho e desligar os outros
             printf("ON: RED\n");
             gpio_put(GREEN_LED_PIN, 0);
             gpio_put(BLUE_LED_PIN, 0);
             gpio_put(RED_LED_PIN, 1);
-        } else if (strcmp(word, "white") == 0 || strcmp(word, "branco") == 0) {
+        }
+        else if (strcmp(word, "white") == 0 || strcmp(word, "branco") == 0)
+        {
             // Ligar todos os LEDs
             printf("ON: WHITE\n");
-            
-        } else if (strcmp(word, "off") == 0 || strcmp(word, "desligar") == 0) {
+            gpio_put(GREEN_LED_PIN, 1);
+            gpio_put(BLUE_LED_PIN, 1);
+            gpio_put(RED_LED_PIN, 1);
+        }
+        else if (strcmp(word, "off") == 0 || strcmp(word, "desligar") == 0)
+        {
             // Desligar todos os LEDs
+            gpio_put(GREEN_LED_PIN, 0);
+            gpio_put(BLUE_LED_PIN, 0);
+            gpio_put(RED_LED_PIN, 0);
             printf("SYSTEM: OFF\n");
-            
-        } else if (strcmp(word, "buzzer") == 0 || strcmp(word, "buzina") == 0) {
+        } else if (strcmp(word, "buzzer") == 0 || strcmp(word, "buzina") == 0) 
+        {
             // Ligar o buzzer por 2 segundos
             printf("ON: BUZZER\n");
             beep(BUZZER_PIN, 2000);  // Emitir o beep por 2 segundos
-        } else if (strcmp(word, "bootsel") == 0) {
+        } else if (strcmp(word, "bootsel") == 0) 
+        {
+
             printf("SYSTEM: BOOTSEL\n");
             reset_usb_boot(0, 0);
-        } else {
+        }
+        else
+        {
             printf("SYSTEM: INVALID COMMAND\n");
         }
     }
